@@ -71,7 +71,7 @@
 
                 <div class="mb-3">
                     <label for="" class="form-label">Bank</label>
-                    <select wire:model.live='supplier.bank_id' class="form-select form-select-lg" name=""
+                    <select wire:model.live='supplier.bank_id' class="form-select " name=""
                         id="">
                         <option selected>Select your Bank</option>
                         @foreach ($banks as $bank)

@@ -10,8 +10,8 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input wire:model.live='user.name' type="text" class="form-control" name="name" id="name"
-                            aria-describedby="" placeholder="Enter your User's Name" />
+                        <input wire:model.live='user.name' type="text" class="form-control" name="name"
+                            id="name" aria-describedby="" placeholder="Enter your User's Name" />
                         @error('user.name')
                             <small id="" class="form-text text-danger">{{ $message }}</small>
                         @enderror
@@ -21,11 +21,23 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email Address</label>
-                        <input wire:model.live='user.email' type="email" class="form-control" name="email" id="email"
-                            aria-describedby="" placeholder="Enter your User's Email Address" />
+                        <input wire:model.live='user.email' type="email" class="form-control" name="email"
+                            id="email" aria-describedby="" placeholder="Enter your User's Email Address" />
                         @error('user.email')
                             <small id="" class="form-text text-danger">{{ $message }}</small>
                         @enderror
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="form-group mb-3">
+                        <label for="">Roles</label>
+                        <select wire:model='selectedRoles' multiple class="form-control" name="" id="">
+                            @forelse ($roles as $role)
+                                <option value="{{ $role->id }}">{{ $role->title }}</option>
+                            @empty
+                                <option disabled>No roles</option>
+                            @endforelse
+                        </select>
                     </div>
                 </div>
             </div>

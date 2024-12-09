@@ -14,6 +14,8 @@
                         <th>Address</th>
                         <th>Business Details</th>
                         <th>Account Details</th>
+                        <th>Purchases Made</th>
+                        <th>Total Purchase Value</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -35,12 +37,25 @@
                                 <small><strong>Bank:</strong> {{ $supplier->bank->name }}</small><br>
                                 <small><strong>A/c No:</strong> {{ $supplier->account_number }}</small>
                             </td>
+                            <td>
+                                {{ $supplier->purchases->count() }}
+                            </td>
+                            <td>
+                                <small>KES
+                                </small>{{ number_format(
+                                    $supplier->purchases->sum(function ($sale) {
+                                        return $sale->total_amount;
+                                    }),
+                                ) }}
+                            </td>
                             <td class="text-center">
                                 <a wire:navigate href="{{ route('admin.suppliers.edit', $supplier->id) }}"
                                     class="btn btn-secondary">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <button class="btn btn-danger">
+                                <button
+                                    onclick="confirm('Are you sure you wish to DELETE this Supplier?')||event.stopImmediatePropagation()"
+                                    class="btn btn-danger" wire:click='delete({{ $supplier->id }})'>
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
 

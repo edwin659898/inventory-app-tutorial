@@ -12,6 +12,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Symbol</th>
+                        <th>Number of Products</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -21,13 +22,14 @@
                             <td scope="row">{{ $unit->id }}</td>
                             <td>{{ $unit->name }}</td>
                             <td>{{ $unit->symbol }}</td>
+                            <td>{{ $unit->products->count() }}</td>
 
                             <td class="text-center">
                                 <a href="{{ route('admin.units.edit', $unit->id) }}"
                                     class="btn btn-secondary">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <button class="btn btn-danger">
+                                <button onclick="confirm('Are you sure you wish to DELETE this Unit?')||event.stopImmediatePropagation()" class="btn btn-danger" wire:click='delete({{ $unit->id }})'>
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
 

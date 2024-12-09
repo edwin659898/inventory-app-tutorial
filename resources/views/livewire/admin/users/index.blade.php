@@ -28,11 +28,10 @@
                                 @endforeach
                             </td>
                             <td class="text-center">
-                                <a href="{{ route('admin.users.edit', $user->id) }}"
-                                    class="btn btn-secondary">
+                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-secondary">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <button class="btn btn-danger">
+                                <button onclick="confirm('Are you sure you wish to DELETE this User?')||event.stopImmediatePropagation()" class="btn btn-danger" wire:click='delete({{ $user->id }})'>
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
 

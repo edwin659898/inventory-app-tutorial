@@ -8,18 +8,34 @@
         <div class="card-body">
 
             <div class="row">
-                <div class="mb-3">
-                    <label for="" class="form-label">Product Category</label>
-                    <select wire:model.live='product.product_category_id' class="form-select " name=""
-                        id="">
-                        <option selected>Select your Product Category</option>
-                        @foreach ($productCategories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('product.product_category_id')
-                        <small id="" class="form-text text-danger">{{ $message }}</small>
-                    @enderror
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Product Category</label>
+                        <select wire:model.live='product.product_category_id' class="form-select " name=""
+                            id="">
+                            <option selected>Select your Product Category</option>
+                            @foreach ($productCategories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('product.product_category_id')
+                            <small id="" class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Brand</label>
+                        <select wire:model.live='product.brand_id' class="form-select " name="" id="">
+                            <option selected>Select your Brand</option>
+                            @foreach ($brands as $brand)
+                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('product.brand_id')
+                            <small id="" class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>

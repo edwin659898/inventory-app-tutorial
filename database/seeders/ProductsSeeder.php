@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Brand;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,7 @@ class ProductsSeeder extends Seeder
     {
         DB::table('products')->insert([
             [
+                'brand_id' => rand(1, count(Brand::all())),
                 'product_category_id' => 1, // Laptops
                 'name' => 'Dell XPS 13',
                 'description' => 'High-performance laptop with an Intel i7 processor and 16GB RAM.',
@@ -26,6 +28,7 @@ class ProductsSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'brand_id' => rand(1, count(Brand::all())),
                 'product_category_id' => 2, // Smartphones
                 'name' => 'Samsung Galaxy S23',
                 'description' => 'Latest smartphone with advanced camera features and 256GB storage.',
@@ -37,6 +40,7 @@ class ProductsSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'brand_id' => rand(1, count(Brand::all())),
                 'product_category_id' => 3, // Tablets
                 'name' => 'Apple iPad Pro 11"',
                 'description' => 'Premium tablet with M2 chip and 128GB storage.',
@@ -48,6 +52,7 @@ class ProductsSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'brand_id' => rand(1, count(Brand::all())),
                 'product_category_id' => 4, // Accessories
                 'name' => 'Wireless Earbuds',
                 'description' => 'Bluetooth 5.0 wireless earbuds with noise cancellation.',
@@ -59,6 +64,7 @@ class ProductsSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'brand_id' => rand(1, count(Brand::all())), //
                 'product_category_id' => 5, // PC Components
                 'name' => 'NVIDIA GeForce RTX 4080',
                 'description' => 'High-end graphics card for gaming and creative work.',
@@ -70,6 +76,7 @@ class ProductsSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'brand_id' => rand(1, count(Brand::all())), //
                 'product_category_id' => 6, // Networking Equipment
                 'name' => 'TP-Link Archer AX6000',
                 'description' => 'Dual-band Wi-Fi 6 router with high-speed connectivity.',
@@ -81,6 +88,7 @@ class ProductsSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'brand_id' => rand(1, count(Brand::all())), //
                 'product_category_id' => 7, // Gaming Consoles
                 'name' => 'PlayStation 5',
                 'description' => 'Next-generation gaming console with 4K resolution and dual sense controller.',

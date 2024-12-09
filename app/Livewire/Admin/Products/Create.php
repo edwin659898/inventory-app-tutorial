@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Products;
 
+use App\Models\Brand;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Unit;
@@ -15,6 +16,7 @@ class Create extends Component
     {
         return [
             'product.name' => 'required',
+            'product.brand_id' => 'required',
             'product.description' => 'required',
             'product.unit_id' => 'required',
             'product.product_category_id' => 'required',
@@ -49,7 +51,8 @@ class Create extends Component
     {
         return view('livewire.admin.products.create', [
             'productCategories' => ProductCategory::all(),
-            'units' => Unit::all()
+            'units' => Unit::all(),
+            'brands' => Brand::all()
         ]);
     }
 }

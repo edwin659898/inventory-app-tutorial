@@ -12,6 +12,7 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Users</th>
+                        <th class="text-center w-50">Roles</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -22,12 +23,21 @@
                             <td>{{ $role->title }}</td>
                             <td>{{ count($role->users) }}</td>
 
+                            <td>
+                                <ol class="row">
+                                    @foreach (json_decode($role->permissions) as $permission)
+                                        <li class="col-3">{{ $permission }}</li>
+                                    @endforeach
+                                </ol>
+                            </td>
+
                             <td class="text-center">
-                                <a href="{{ route('admin.roles.edit', $role->id) }}"
-                                    class="btn btn-secondary">
+                                <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-secondary">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <button class="btn btn-danger">
+                                <button
+                                    onclick="confirm('Are you sure you wish to DELETE this Role?')||event.stopImmediatePropagation()"
+                                    class="btn btn-danger" wire:click='delete({{ $role->id }})'>
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
 

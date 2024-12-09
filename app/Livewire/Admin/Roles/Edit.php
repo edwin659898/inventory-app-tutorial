@@ -8,6 +8,10 @@ use Livewire\Component;
 class Edit extends Component
 {
     public Role $role;
+    public String $search = '';
+    public array $permissions = [];
+
+    public array $selected_permissions = [];
 
     function rules()
     {
@@ -19,6 +23,32 @@ class Edit extends Component
     function mount($id)
     {
         $this->role = Role::find($id);
+        $this->selected_permissions = json_decode($this->role->permissions);
+    }
+
+    function add($permission)
+    {
+        // $this->dispatch('done', success: "Test Complete");
+        try {
+            if (in_array($permission, $this->selected_permissions)) {
+                throw new \Exception("Error Processing Request: Permission already added", 1);
+            }
+
+            array_push($this->selected_permissions, $permission);
+        } catch (\Throwable $th) {
+            //throw $th;
+            $this->dispatch('done', error: "Something Went Wrong: " . $th->getMessage());
+        }
+    }
+    function subtract($key)
+    {
+        try {
+            //code...
+            array_splice($this->selected_permissions, $key, 1);
+        } catch (\Throwable $th) {
+            //throw $th;
+            $this->dispatch('done', error: "Something Went Wrong: " . $th->getMessage());
+        }
     }
 
     function updated()
@@ -30,6 +60,7 @@ class Edit extends Component
     {
         $this->validate();
         try {
+            $this->role->permissions = json_encode($this->selected_permissions);
             $this->role->update();
             return redirect()->route('admin.roles.index');
         } catch (\Throwable $th) {
@@ -38,6 +69,15 @@ class Edit extends Component
     }
     public function render()
     {
-        return view('livewire.admin.roles.edit');
+        $filteredData = [];
+
+        if (!empty($this->search)) {
+            $filteredData = array_filter($this->permissions, function ($permission) {
+                return str_contains($permission, $this->search) !== false;
+            });
+        }
+        return view('livewire.admin.roles.edit', [
+            'filtered_permissions' => $filteredData
+        ]);
     }
 }

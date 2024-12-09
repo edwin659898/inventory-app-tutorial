@@ -10,4 +10,9 @@ class Supplier extends Model
     {
         return $this->belongsTo(Bank::class);
     }
+
+    function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
 }
