@@ -155,4 +155,14 @@ Route::middleware([
         Route::get('/create', Admin\Units\Create::class)->name('create');
         Route::get('{id}/edit', Admin\Units\Edit::class)->name('edit');
     });
+    Route::prefix('sale-payments')->middleware('permission:manage payments')->name('sale-payments.')->group(function () {
+        Route::get('/', Admin\SalePayments\Index::class)->name('index');
+        Route::get('/create', Admin\SalePayments\Create::class)->name('create');
+        Route::get('{id}/edit', Admin\SalePayments\Edit::class)->name('edit');
+    });
+    Route::prefix('purchase-payments')->middleware('permission:manage payments')->name('purchase-payments.')->group(function () {
+        Route::get('/', Admin\PurchasePayments\Index::class)->name('index');
+        Route::get('/create', Admin\PurchasePayments\Create::class)->name('create');
+        Route::get('{id}/edit', Admin\PurchasePayments\Edit::class)->name('edit');
+    });
 });

@@ -66,7 +66,13 @@ class Create extends Component
                 'price' => 'required',
             ]);
 
+            if (Product::find($this->selectedProductId)->inventory_balance < $this->quantity) {
+                throw new \Exception("Inventory Balance is Low", 1);
+            }
             foreach ($this->productList as $key => $listItem) {
+
+                // $new_balance = Product::find($listItem['product_id'])->inventory_balance;
+
                 if ($listItem['product_id'] == $this->selectedProductId && $listItem['price'] == $this->price) {
                     $this->productList[$key]['quantity'] += $this->quantity;
                     return;
@@ -97,6 +103,11 @@ class Create extends Component
 
         try {
             $this->validate();
+            foreach ($this->productList as $key => $listItem) {
+                if (Product::find($listItem['product_id'])->inventory_balance < $listItem['quantity']) {
+                    throw new \Exception("Inventory Balance for " . Product::find($listItem['product_id'])->name . " is Low", 1);
+                }
+            }
             $this->sale->save();
             foreach ($this->productList as $key => $listItem) {
                 $this->sale->products()->attach($listItem['product_id'], [
@@ -104,7 +115,9 @@ class Create extends Component
                     'unit_price' => $listItem['price'],
                 ]);
             }
-
+            if ($this->sale->products->count() == 0) {
+                $this->sale->delete();
+            }
             return redirect()->route('admin.sales.index');
         } catch (\Throwable $th) {
             $this->dispatch('done', error: "Something Went Wrong: " . $th->getMessage());

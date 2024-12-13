@@ -95,6 +95,18 @@
                     <x-new-nav-link title="Create Invoice" bi_icon="" route="admin.invoices.create" />
                 </x-new-nav-link-dropdown>
             @endif
+            @if (auth()->user()->hasPermission('manage payments'))
+                <x-new-nav-link-dropdown title="Sale Payments" bi_icon="bi-file-text" route="admin.sale-payments*">
+                    <x-new-nav-link title="Sale Payments List" bi_icon="" route="admin.sale-payments.index" />
+                    <x-new-nav-link title="Create Sale Payment" bi_icon="" route="admin.sale-payments.create" />
+                </x-new-nav-link-dropdown>
+            @endif
+            @if (auth()->user()->hasPermission('manage payments'))
+                <x-new-nav-link-dropdown title="Purchase Payments" bi_icon="bi-file-text" route="admin.purchase-payments*">
+                    <x-new-nav-link title="Purchase Payments List" bi_icon="" route="admin.purchase-payments.index" />
+                    <x-new-nav-link title="Create Purchase Payment" bi_icon="" route="admin.purchase-payments.create" />
+                </x-new-nav-link-dropdown>
+            @endif
             @if (auth()->user()->hasPermission('manage credit notes'))
                 <x-new-nav-link-dropdown title="Credit Notes" bi_icon="bi-receipt" route="admin.credit-notes*">
                     <x-new-nav-link title="Credit Notes List" bi_icon="" route="admin.credit-notes.index" />

@@ -41,6 +41,14 @@
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
 
+                                @if ($role->id == 1 && json_decode($role->permissions) != config('permissions.permissions'))
+                                    <button
+                                        onclick="confirm('Are you sure you wish to UPDATE this roles permissions?')||event.stopImmediatePropagation()"
+                                        class="btn btn-primary" wire:click='updatePermissions({{ $role->id }})'>
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </button>
+                                @endif
+
                             </td>
                         </tr>
                     @endforeach

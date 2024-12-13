@@ -15,15 +15,15 @@
     background-color: #f29f67;
 }
 
-.text-orange{
+.text-orange {
     color: orangered;
 }
 
 .bg-inv-secondary {
     background-color: #1e1e2c;
     color: #f29f67;
-    .text-muted{
-        color:darken($color: #f29f67, $amount: 20%) !important;
+    .text-muted {
+        color: darken($color: #f29f67, $amount: 20%) !important;
     }
     .nav-item {
         color: lighten($color: #1e1e2c, $amount: 40%) !important;
@@ -53,4 +53,11 @@
 
 body {
     font-family: "Lexend", serif !important;
+}
+
+.text-cash-green {
+    color: #158a0c;
+}
+.text-cash-red {
+    color: #ae0c00;
 }

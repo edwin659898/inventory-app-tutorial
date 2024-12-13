@@ -19,5 +19,6 @@ return [
         'manage purchases',
         'manage sales',
         'manage units',
+        'manage payments',
     ]
 ];

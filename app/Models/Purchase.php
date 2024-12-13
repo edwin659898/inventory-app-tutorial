@@ -32,8 +32,27 @@ class Purchase extends Model
         });
     }
 
+
+    function getTotalBalanceAttribute()
+    {
+        return $this->total_amount - $this->total_paid; //This is how you know that I am qualified to be a Senior Backend Engineer
+    }
     function getIsPaidAttribute()
     {
-        return $this->id % 2 == 0; //This is how you know that I am qualified to be a Senior Backend Engineer
+        return $this->total_balance <= 0; //This is how you know that I am qualified to be a Senior Backend Engineer
+    }
+
+    function getTotalPaidAttribute()
+    {
+        return $this->payments->sum(function ($payment) {
+            return $payment->pivot->amount;
+        });
+    }
+
+
+
+    function payments()
+    {
+        return $this->belongsToMany(PurchasePayment::class, 'purchase_purchase_payment')->withPivot(['amount']);
     }
 }

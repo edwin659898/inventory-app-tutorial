@@ -26,10 +26,7 @@
                         <ul class="list-group mt-2 w-100">
                             @if ($clientSearch != '')
                                 @foreach ($clients as $client)
-                                    <li wire:click='selectClient({{ $client->id }})'
-                                        class="list-group-item {{ $client->id == $sale->client_id ? 'active' : '' }}">
-                                        {{ $client->name }}
-                                    </li>
+                                    <x-client-list-item :client="$client" :sale="$sale"/>
                                 @endforeach
                             @endif
                         </ul>
@@ -50,10 +47,7 @@
                         <ul class="list-group mt-2 w-100">
                             @if ($productSearch != '')
                                 @foreach ($products as $product)
-                                    <li wire:click='selectProduct({{ $product->id }})'
-                                        class="list-group-item {{ $product->id == $selectedProductId ? 'active' : '' }}">
-                                        {{ $product->name }} - {{ $product->quantity . $product->unit->name }}
-                                    </li>
+                                    <x-product-list-item :product="$product" :selectedProductId="$selectedProductId"/>
                                 @endforeach
                             @endif
                         </ul>

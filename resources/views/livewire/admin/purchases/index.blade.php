@@ -14,6 +14,8 @@
                         <th>Supplier</th>
                         <th>No. of Units Bought</th>
                         <th>Total Amount</th>
+                        <th>Total Paid</th>
+                        <th>Total Balance</th>
                         <th>Status</th>
                         <th class="text-center">Actions</th>
                     </tr>
@@ -33,6 +35,12 @@
                             </td>
                             <td>
                                 <small>KES {{ number_format($purchase->total_amount, 2) }}</small>
+                            </td>
+                            <td>
+                                <small>KES {{ number_format($purchase->total_paid, 2) }}</small>
+                            </td>
+                            <td>
+                                <small>KES {{ number_format($purchase->total_balance, 2) }}</small>
                             </td>
                             <td>
                                 <span class="{{ $purchase->is_paid ? 'text-success' : 'text-danger' }}"
