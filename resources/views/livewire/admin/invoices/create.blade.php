@@ -26,10 +26,7 @@
                         <ul class="list-group mt-2 w-100">
                             @if ($clientSearch != '')
                                 @foreach ($clients as $client)
-                                    <li wire:click='selectClient({{ $client->id }})'
-                                        class="list-group-item {{ $client->id == $invoice->client_id ? 'active' : '' }}">
-                                        {{ $client->name }}
-                                    </li>
+                                    <x-client-list-item :client="$client" :sale="$invoice" />
                                 @endforeach
                             @endif
                         </ul>
@@ -50,7 +47,7 @@
                         <ul class="list-group mt-2 w-100">
                             @if ($productSearch != '')
                                 @foreach ($products as $product)
-                                    <x-product-list-group :product="$product" :selectedProductId="$selectedProductId"/>
+                                    <x-product-list-item :product="$product" :selectedProductId="$selectedProductId" />
                                 @endforeach
                             @endif
                         </ul>
@@ -158,9 +155,9 @@
                                 @endif
                             </tbody>
                         </table>
-                            <button
-                                onclick="confirm('Are you sure you wish to make the invoice')||event.stopImmediatePropagation()"
-                                wire:click='makeInvoice' class="btn btn-dark text-inv-primary w-100">Make Invoice</button>
+                        <button
+                            onclick="confirm('Are you sure you wish to make the invoice')||event.stopImmediatePropagation()"
+                            wire:click='makeInvoice' class="btn btn-dark text-inv-primary w-100">Make Invoice</button>
 
                     </div>
                 </div>

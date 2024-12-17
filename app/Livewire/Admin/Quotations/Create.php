@@ -52,10 +52,12 @@ class Create extends Component
     function selectClient($id)
     {
         $this->quotation->client_id = $id;
+        $this->clientSearch = $this->quotation->client->name;
     }
     function selectProduct($id)
     {
         $this->selectedProductId = $id;
+        $this->productSearch = Product::find($id)->name;
     }
     function addToList()
     {

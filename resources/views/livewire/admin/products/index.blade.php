@@ -13,6 +13,7 @@
                         <th>Product Details</th>
                         <th>Category</th>
                         <th>Measurement</th>
+                        <th>Inventory Balance</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -27,6 +28,9 @@
                             <td>{{ $product->category->name }}</td>
                             <td>
                                 {{ $product->quantity . ' ' . $product->unit->name }}
+                            </td>
+                            <td>
+                                {{ $product->inventory_balance }}
                             </td>
                             <td class="text-center">
                                 <a wire:navigate href="{{ route('admin.products.edit', $product->id) }}"

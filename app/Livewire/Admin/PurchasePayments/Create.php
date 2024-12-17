@@ -30,7 +30,7 @@ class Create extends Component
     function selectSupplier($id)
     {
         $this->purchase_payment->supplier_id = $id;
-        $this->supplierSearch = Supplier::find($id)->name;
+        $this->supplierSearch = $this->purchase_payment->supplier->name;
     }
 
     function takeBalance()

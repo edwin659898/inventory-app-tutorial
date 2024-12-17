@@ -19,6 +19,13 @@ class Purchase extends Model
         return $this->belongsToMany(Product::class, 'product_purchase')->withPivot(['quantity', 'unit_price']);
     }
 
+    public function getTotalValueAttribute()
+    {
+        return $this->products->sum(function ($product) {
+            return $product->pivot->quantity * $product->purchase_price;
+        });
+    }
+
     public function getTotalAmountAttribute()
     {
         return $this->products->sum(function ($product) {

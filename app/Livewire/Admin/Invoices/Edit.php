@@ -62,10 +62,12 @@ class Edit extends Component
     function selectClient($id)
     {
         $this->invoice->client_id = $id;
+        $this->clientSearch = $this->invoice->client->name;
     }
     function selectProduct($id)
     {
         $this->selectedProductId = $id;
+        $this->productSearch = Product::find($id)->name;
     }
     function addToList()
     {

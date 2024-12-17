@@ -52,10 +52,13 @@ class Create extends Component
     function selectSupplier($id)
     {
         $this->purchase->supplier_id = $id;
+        $this->supplierSearch = $this->purchase->supplier->name;
+
     }
     function selectProduct($id)
     {
         $this->selectedProductId = $id;
+        $this->productSearch = Product::find($id)->name;
     }
     function addToList()
     {

@@ -4,7 +4,7 @@
 
             <li class="nav-header">Initialization</li>
             <x-new-nav-link title="Dashboard" bi_icon="bi-speedometer" route="admin.dashboard" />
-
+            {{-- <x-new-nav-link title="Overview" bi_icon="bi-wallet" route="admin.accounts-summary" /> --}}
             @if (auth()->user()->hasPermission('manage roles'))
                 <x-new-nav-link-dropdown title="Roles" bi_icon="bi-person-check" route="admin.roles*">
                     <x-new-nav-link title="Roles List" bi_icon="" route="admin.roles.index" />
@@ -62,10 +62,11 @@
                     <x-new-nav-link title="Products List" bi_icon="" route="admin.products.index" />
                     <x-new-nav-link title="Create Product" bi_icon="" route="admin.products.create" />
                 </x-new-nav-link-dropdown>
+            @endif
+            <li class="nav-header">Accounting & Inventory</li>
 
-                <li class="nav-header">Accounting & Inventory</li>
 
-                <x-new-nav-link title="Overview" bi_icon="bi-wallet" route="admin.accounts-summary" />
+            @if (auth()->user()->hasPermission('manage purchases'))
                 <x-new-nav-link-dropdown title="Purchases" bi_icon="bi-cash-stack" route="admin.purchases*">
                     <x-new-nav-link title="Purchases List" bi_icon="" route="admin.purchases.index" />
                     <x-new-nav-link title="Create Purchase" bi_icon="" route="admin.purchases.create" />
@@ -102,9 +103,12 @@
                 </x-new-nav-link-dropdown>
             @endif
             @if (auth()->user()->hasPermission('manage payments'))
-                <x-new-nav-link-dropdown title="Purchase Payments" bi_icon="bi-file-text" route="admin.purchase-payments*">
-                    <x-new-nav-link title="Purchase Payments List" bi_icon="" route="admin.purchase-payments.index" />
-                    <x-new-nav-link title="Create Purchase Payment" bi_icon="" route="admin.purchase-payments.create" />
+                <x-new-nav-link-dropdown title="Purchase Payments" bi_icon="bi-file-text"
+                    route="admin.purchase-payments*">
+                    <x-new-nav-link title="Purchase Payments List" bi_icon=""
+                        route="admin.purchase-payments.index" />
+                    <x-new-nav-link title="Create Purchase Payment" bi_icon=""
+                        route="admin.purchase-payments.create" />
                 </x-new-nav-link-dropdown>
             @endif
             @if (auth()->user()->hasPermission('manage credit notes'))

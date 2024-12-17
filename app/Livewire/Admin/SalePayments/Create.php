@@ -30,7 +30,7 @@ class Create extends Component
     function selectClient($id)
     {
         $this->sale_payment->client_id = $id;
-        $this->clientSearch = Client::find($id)->name;
+        $this->clientSearch = $this->sale_payment->client->name;
     }
 
     function takeBalance()
