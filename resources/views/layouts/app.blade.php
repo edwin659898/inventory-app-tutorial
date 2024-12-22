@@ -45,7 +45,7 @@
                     <!--begin::Brand Image-->
                     <img src="{{ asset('admin-lte/assets/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                         class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span
-                        class="brand-text fw-light ">Inventory App</span> <!--end::Brand Text--> </a>
+                        class="brand-text fw-light ">{{ env('APP_NAME', 'Laravel') }}</span> <!--end::Brand Text--> </a>
                 <!--end::Brand Link-->
             </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
             <x-sidebar-navigation  />
