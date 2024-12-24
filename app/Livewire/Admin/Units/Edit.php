@@ -7,12 +7,13 @@ use Livewire\Component;
 
 class Edit extends Component
 {
-    public Unit $unit;
+    public $unit;
 
     function rules()
     {
         return [
             'unit.name' => "required",
+            'unit.symbol' => "required",
         ];
     }
 

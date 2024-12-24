@@ -13,6 +13,7 @@ class Create extends Component
     {
         return [
             'unit.name' => "required",
+            'unit.symbol' => "required",
         ];
     }
 
