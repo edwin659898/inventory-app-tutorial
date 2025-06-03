@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -37,6 +38,16 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+
+        DB::table('users')->insert([
+            'id' => 1,
+            'name' => 'Administrator',
+            'email' => 'edwink@betterglobeforestry.com', // ✅ Add a valid email
+            'password' => bcrypt('1234567890'),
+        ]);
+
+        
     }
 
     /**

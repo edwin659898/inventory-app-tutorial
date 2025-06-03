@@ -20,12 +20,12 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        DB::table('users')->insert([
-            'id' => 1,
-            'name' => "Administrator",
-            'email' => env('ADMIN_EMAIL'),
-            'password' => Hash::make(env('ADMIN_PASSWORD')),
-        ]);
+        // DB::table('users')->insert([
+        //     'id' => 1,
+        //     'name' => "Administrator",
+        //     'email' => env('ADMIN_EMAIL'),
+        //     'password' => Hash::make(env('ADMIN_PASSWORD')),
+        // ]);
 
         DB::table('role_user')->insert([
             'role_id' => 1,
